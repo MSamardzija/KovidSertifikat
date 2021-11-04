@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<!-- 
+    Strogo je zabranjeno koriscenje laznih kovid propusnica za bilo koju vrstu benefita koje one prizaju, 
+    nisam odgovoran za zlonamerno koriscenje ovog projekta niti dozvoljavam menjanje koda i koriscenje na drugim mestima.
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generisi svoj QR</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="GeneratorStyle.css">
+</head>
+
+<body>
+
+    <script src="davidshimjs-qrcodejs-04f46c6/jquery.min.js"></script>
+    <script src="davidshimjs-qrcodejs-04f46c6/qrcode.js"></script>
+
+    <div class="container">
+        <div class="row text-center">
+            <h1>Generiši svoj QR kod</h1>
+            <h4>Unesite svoje ime i prezime da generišete Vaš QR Kod <br> ocitavanjem koda bice prikazana vaš kovid sertifikat</h4>
+            <p>Unositi latinicu sa kvačicama  !!!</p>
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="ime">Ime</label>
+                    <input type="text" class="form-control" id="ime">
+                </div>
+                <div class="form-group">
+                    <label for="prezime">Prezime</label>
+                    <input type="text" class="form-control" id="prezime">
+                </div>
+                <a onclick="makeCode();" class="btn btn-primary">Kreiraj Svoj Kod</a>
+            </form>
+            <div id="qrcode"></div>
+            <div id="FinalButtons">
+                <button onclick="openCertificate()" disabled class="btn btn-info">Proveri kovid propusnicu</button>
+                <button onclick="downloadQR()" disabled class="btn btn-primary">Skini svoj kod</button>
+            </div>
+            <p>Napomena<br>STROGO JE Zabranjeno koriscenje ovog projekta u svrhe prikazivanja laznih kovid sertifikata na bilo kom javnom mestu!</p>
+            <div style="margin-top: 4rem;">Strogo je zabranjeno koriscenje laznih kovid propusnica za bilo koju vrstu benefita koje one pruzaju, 
+                nisam odgovoran za zlonamerno koriscenje ovog projekta niti dozvoljavam menjanje i koriscenje ovog projekta na drugim mestima u bilo koje svrhe.</div>
+        </div>
+    </div>
+
+
+    <script>
+        var ime;
+        var prezime;
+        var link;
+        var qrcode = new QRCode("qrcode");
+
+        function makeCode() {
+            ime = document.getElementById("ime").value;
+            prezime = document.getElementById("prezime").value;
+
+            if (ime == "" || prezime == "") {
+                document.getElementsByTagName("button")[0].disabled = true;
+                document.getElementsByTagName("button")[1].disabled = true;
+                alert("Unesi ime i prezime!");
+            }
+            else {
+                link = "https://samardzija.rs/projects/Propusnice/index.html?name=" + ime + "&LastName=" + prezime;
+                qrcode.makeCode(link);
+                document.getElementsByTagName("button")[0].disabled = false;
+                document.getElementsByTagName("button")[1].disabled = false;
+                document.getElementById("ime").value = "";
+                document.getElementById("prezime").value = "";
+            }
+        }
+        function downloadQR() {
+            var imgLink = document.getElementsByTagName("img")[0].src;
+            var win = window.open();
+            win.document.write('<iframe src="' + imgLink + '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe>');
+        }
+
+        function openCertificate() {
+            window.open(link, '_blank').focus();
+            console.log(link)
+        }
+    </script>
+
+    <!-- jQuery 3 -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script> <!-- Bootstrap 3.3.7 -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

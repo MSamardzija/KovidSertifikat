@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #d2d6de;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 5rem;
+}
+
+p{
+  color: red;
+  text-transform: uppercase;
+}
+
+h4 {
+  margin-bottom: 2rem;
+}
+
+.form-inline {
+  margin-bottom: 2rem;
+}
+
+#text {
+  width: 80%;
+}
+
+#qrcode {
+  margin:20px auto 100px auto;
+  width:160px;
+  height:160px;  
+} 
+#FinalButtons a{
+  margin-top: 2rem;
+}

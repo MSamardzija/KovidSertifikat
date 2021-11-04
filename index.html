@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<!-- 
+    Strogo je zabranjeno koriscenje laznih kovid propusnica za bilo koju vrstu benefita koje one prizaju, 
+    nisam odgovoran za zlonamerno koriscenje ovog projekta niti dozvoljavam menjanje koda i koriscenje na drugim mestima.
+-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>COVID-19 Validation</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="bower_components/font-awesome/css/fontawesome.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="bower_components/AdminLTE-2.4.5/dist/css/AdminLTE.min.css">
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  </head>
+
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo" style="font-size:18px">
+            <a href="#"><img src="batutLogo.png" width="100%"></a><br><br>
+            <a href="#"><b>Цовид-19</b> Валидација</a><br>
+            <a href="#"><b>Covid-19</b> Validacija</a><br>
+            <a href="#"><b>Covid-19</b> Validation</a>
+        </div>
+        <div onload="getParameter();" class="login-box-body">
+            <div class="alert alert-success" align="center">
+                <strong style="text-transform: uppercase;"><span id="cir"></span><br><span id="lat"></span></strong><br>Име и презиме, Ime i prezime, Name and
+                lastname<br><br>
+                Шифра потврде <strong>5734394-3065543</strong><br>Потврда је ВАЛИДНА! <br>Резултат тестирања
+                Позитиван<br>
+                Šifra potvrde <strong>5734394-3065543</strong><br>Potvrda je VALIDNA! <br>Rezultat testiranja
+                Pozitivan<br>
+                Confirmation code <strong>5734394-3065543</strong><br>Report is VALID! <br>Test result Positive
+            </div>
+
+        </div>
+    </div>
+    <script src="cir2lat.js"></script>
+
+    <script>
+        function getParameter (parameterName){
+            let parameters = new URLSearchParams(window.location.search);
+            return parameters.get(parameterName);
+        }
+            document.getElementById("lat").innerHTML = getParameter("name") + " " + getParameter("LastName");
+            lat2cir();
+            document.getElementById("lat").innerHTML = "(" + getParameter("name") + " " + getParameter("LastName") + ")";
+    </script>
+
+    <!-- jQuery 3 -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>    <!-- Bootstrap 3.3.7 -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html> 
