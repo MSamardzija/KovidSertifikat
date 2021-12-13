@@ -62,7 +62,9 @@
                 alert("Unesi ime i prezime!");
             }
             else {
-                link = "https://samardzija.rs/projects/Propusnice/index.html?name=" + ime + "&LastName=" + prezime;
+                // Link needs to lead to the website where index.html file is located
+                // Example https://Yourwebsite.com/index.html?name=
+                link = "/index.html?name=" + ime + "&LastName=" + prezime;
                 qrcode.makeCode(link);
                 document.getElementsByTagName("button")[0].disabled = false;
                 document.getElementsByTagName("button")[1].disabled = false;
